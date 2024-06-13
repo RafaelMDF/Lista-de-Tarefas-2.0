@@ -1,10 +1,18 @@
+html, body{
+  height: 100%;
+}
+
 body {
-  background: linear-gradient(45deg, blue, red);
-  background-repeat: no-repeat;
-  color: #ffff;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1rem;
+}
+
+html {
+  background: linear-gradient(45deg, blue, red);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
 }
 
 .conteudo {
