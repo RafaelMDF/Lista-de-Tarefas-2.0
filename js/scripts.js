@@ -10,47 +10,59 @@ let inputTarefaNomeEdicao = document.querySelector("#inputTarefaNomeEdicao");
 const qtdIdsDisponiveis = Number.MAX_VALUE;
 
 inputNovaTarefa.addEventListener("keypress", (e) => {
-  if (e.keyCode == 13) {
-    let tarefa = {
-      nome: inputNovaTarefa.value,
-      id: gerarIdV2(),
-    };
-    adicionarTarefa(tarefa);
+  if (e.key === "Enter") {
+    adicionarTarefaSeValida();
   }
+});
+
+btnAddTarefa.addEventListener("click", (e) => {
+  adicionarTarefaSeValida();
+});
+
+btnAtualizarTarefa.addEventListener("click", (e) => {
+  e.preventDefault();
+  atualizarTarefaSeValida();
 });
 
 janelaEdicaoBtnFechar.addEventListener("click", (e) => {
   alternarJanelaEdicao();
 });
 
-btnAddTarefa.addEventListener("click", (e) => {
-  let tarefa = {
-    nome: inputNovaTarefa.value,
-    id: gerarIdV2(),
-  };
-  adicionarTarefa(tarefa);
-});
-
-btnAtualizarTarefa.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  let idTarefa = idTarefaEdicao.innerHTML.replace("#", "");
-
-  let tarefa = {
-    nome: inputTarefaNomeEdicao.value,
-    id: idTarefa,
-  };
-
-  let tarefaAtual = document.getElementById("" + idTarefa + "");
-
-  if (tarefaAtual) {
-    let li = criarTagLI(tarefa);
-    listaTarefas.replaceChild(li, tarefaAtual);
-    alternarJanelaEdicao();
+function adicionarTarefaSeValida() {
+  const tarefaNome = inputNovaTarefa.value.trim();
+  if (tarefaNome !== "") {
+    let tarefa = {
+      nome: tarefaNome,
+      id: gerarIdV2(),
+    };
+    adicionarTarefa(tarefa);
   } else {
-    alert("Elemento HTML não encontrado!");
+    alert("Por favor, insira uma tarefa válida.");
   }
-});
+}
+
+function atualizarTarefaSeValida() {
+  let idTarefa = idTarefaEdicao.innerHTML.replace("#", "");
+  const tarefaNome = inputTarefaNomeEdicao.value.trim();
+  if (tarefaNome !== "") {
+    let tarefa = {
+      nome: tarefaNome,
+      id: idTarefa,
+    };
+
+    let tarefaAtual = document.getElementById("" + idTarefa + "");
+
+    if (tarefaAtual) {
+      let li = criarTagLI(tarefa);
+      listaTarefas.replaceChild(li, tarefaAtual);
+      alternarJanelaEdicao();
+    } else {
+      alert("Elemento HTML não encontrado!");
+    }
+  } else {
+    alert("Por favor, insira uma tarefa válida.");
+  }
+}
 
 function gerarId() {
   return Math.floor(Math.random() * qtdIdsDisponiveis);
@@ -61,7 +73,6 @@ function gerarIdV2() {
 }
 
 function gerarIdUnico() {
-  // debugger;
   let itensDaLista = document.querySelector("#listaTarefas").children;
   let idsGerados = [];
 
@@ -126,7 +137,7 @@ function editar(idTarefa) {
   let li = document.getElementById("" + idTarefa + "");
   if (li) {
     idTarefaEdicao.innerHTML = "#" + idTarefa;
-    inputTarefaNomeEdicao.value = li.innerText;
+    inputTarefaNomeEdicao.value = li.querySelector(".textoTarefa").innerText;
     alternarJanelaEdicao();
   } else {
     alert("Elemento HTML não encontrado!");
@@ -134,7 +145,7 @@ function editar(idTarefa) {
 }
 
 function excluir(idTarefa) {
-  let confirmacao = window.confirm("Tem certeza que deseja excluir? ");
+  let confirmacao = window.confirm("Tem certeza que deseja excluir?");
   if (confirmacao) {
     let li = document.getElementById("" + idTarefa + "");
     if (li) {
