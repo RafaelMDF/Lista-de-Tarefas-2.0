@@ -1,0 +1,210 @@
+/* Define altura total para html e body */
+html, body {
+  height: 100%;
+}
+
+/* Reseta margem, define fonte e tamanho base */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+}
+
+/* Estiliza o html com gradiente de fundo e cores de texto */
+html {
+  background: linear-gradient(45deg, blue, rgb(0, 255, 149)); /* Gradiente de fundo */
+  background-repeat: no-repeat; /* Não repete o fundo */
+  background-size: cover; /* Cobertura total do fundo */
+  color: #fff; /* Cor do texto */
+}
+
+/* Estiliza o conteúdo central */
+.conteudo {
+  margin: 0 auto; /* Centraliza o conteúdo horizontalmente */
+  width: 100%; /* Largura total */
+  max-width: 450px; /* Largura máxima */
+  margin-top: 50px; /* Margem superior */
+  margin-bottom: 50px; /* Margem inferior */
+  background: #2b2a2a; /* Cor de fundo */
+  padding: 55px; /* Espaçamento interno */
+  border-radius: 12px; /* Borda arredondada */
+}
+
+/* Estiliza o topo da página */
+.topo {
+  display: flex; /* Container flexível */
+  justify-content: space-between; /* Distribui espaço entre os itens */
+  margin-bottom: 35px; /* Margem inferior */
+}
+
+/* Estiliza o campo de entrada no topo */
+.topo input {
+  width: 350px; /* Largura do campo de entrada */
+  padding: 15px; /* Espaçamento interno */
+  border-radius: 12px; /* Borda arredondada */
+  border: 1px solid #191818; /* Borda sólida */
+  outline: none; /* Remove contorno ao focar */
+  font-size: 1.2rem; /* Tamanho da fonte */
+  background: #191818; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+}
+
+/* Estiliza o botão no topo */
+.topo button {
+  width: 60px; /* Largura do botão */
+  border-radius: 12px; /* Borda arredondada */
+  border: 1px solid #191818; /* Borda sólida */
+  background: #191818; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  outline: none; /* Remove contorno ao focar */
+}
+
+/* Estiliza o botão no topo quando hover */
+.topo button:hover {
+  background: #1f1e1e; /* Altera cor de fundo ao passar o mouse */
+  cursor: pointer; /* Cursor indicando interação */
+}
+
+/* Estiliza a lista de tarefas */
+#listaTarefas {
+  list-style-type: none; /* Remove marcadores de lista */
+  padding: 0; /* Remove preenchimento interno */
+  margin: 0; /* Remove margens */
+}
+
+/* Estiliza cada item da lista de tarefas */
+#listaTarefas li {
+  padding: 20px; /* Espaçamento interno */
+  background: #191818; /* Cor de fundo */
+  border-radius: 12px; /* Borda arredondada */
+  display: flex; /* Container flexível */
+  justify-content: space-between; /* Distribui espaço entre os itens */
+  align-items: center; /* Alinha itens verticalmente */
+  margin-top: 20px; /* Margem superior */
+}
+
+/* Estiliza os botões de ação dentro dos itens da lista */
+.btnAcao {
+  border-radius: 20px; /* Borda arredondada */
+  border: 1px solid #191818; /* Borda sólida */
+  width: 38px; /* Largura */
+  height: 38px; /* Altura */
+  margin-right: 8px; /* Margem direita */
+  cursor: pointer; /* Cursor indicando interação */
+  background: #2b2a2a; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  outline: none; /* Remove contorno ao focar */
+}
+
+/* Estiliza os botões de ação quando hover */
+.btnAcao:hover {
+  background: #3c3a3a; /* Altera cor de fundo ao passar o mouse */
+}
+
+/* Limita o texto da tarefa com reticências se necessário */
+.textoTarefa {
+  overflow: hidden; /* Esconde conteúdo que excede */
+  text-overflow: ellipsis; /* Exibe reticências em texto overflow */
+  width: 290px; /* Largura máxima */
+  white-space: nowrap; /* Não quebra linha */
+}
+
+/* Estiliza a janela de edição de tarefa */
+#janelaEdicao {
+  position: fixed; /* Posição fixa na tela */
+  top: 50%; /* Alinha topo a 50% da tela */
+  left: 50%; /* Alinha esquerda a 50% da tela */
+  transform: translate(-50%, -50%); /* Centraliza na tela */
+  padding: 20px; /* Espaçamento interno */
+  background: #191818; /* Cor de fundo */
+  border: 1px solid #2f2e2e; /* Borda sólida */
+  width: 415px; /* Largura */
+  border-radius: 12px; /* Borda arredondada */
+  z-index: 200; /* Z-index para sobreposição */
+  display: none; /* Inicialmente oculto */
+}
+
+/* Exibe a janela de edição quando a classe 'abrir' está presente */
+#janelaEdicao.abrir {
+  display: block !important; /* Força exibição da janela */
+}
+
+/* Fundo escuro para a janela de edição */
+#janelaEdicaoFundo {
+  position: fixed; /* Posição fixa na tela */
+  top: 0; /* Alinha topo a 0 */
+  background-color: #000; /* Cor de fundo */
+  bottom: 0; /* Alinha base a 0 */
+  left: 0; /* Alinha esquerda a 0 */
+  opacity: 0.9; /* Opacidade */
+  z-index: 100; /* Z-index para sobreposição */
+  right: 0; /* Alinha direita a 0 */
+  display: none; /* Inicialmente oculto */
+}
+
+/* Exibe o fundo escuro quando a classe 'abrir' está presente */
+#janelaEdicaoFundo.abrir {
+  display: block !important; /* Força exibição do fundo */
+}
+
+/* Estiliza o botão de fechar da janela de edição */
+#janelaEdicaoBtnFechar {
+  position: absolute; /* Posição absoluta */
+  top: -25px; /* Move para cima */
+  right: -18px; /* Move para direita */
+  width: 50px; /* Largura */
+  height: 50px; /* Altura */
+  border-radius: 50%; /* Borda arredondada */
+  border: 1px solid #2d2c2c; /* Borda sólida */
+  background: #2d2c2c; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  outline: none; /* Remove contorno ao focar */
+}
+
+/* Estiliza o formulário dentro da janela de edição */
+form {
+  width: 100%; /* Largura */
+  margin-top: 20px; /* Margem superior */
+}
+
+/* Estiliza cada linha do formulário */
+.frm-linha {
+  display: flex; /* Container flexível */
+  flex-direction: column; /* Direção da coluna */
+  margin-bottom: 20px; /* Margem inferior */
+}
+
+/* Estiliza o rótulo do campo de entrada no formulário */
+.frm-linha label {
+  margin-bottom: 7px; /* Margem inferior */
+}
+
+/* Estiliza o campo de entrada no formulário */
+.frm-linha input {
+  padding: 15px; /* Espaçamento interno */
+  border-radius: 12px; /* Borda arredondada */
+  outline: none; /* Remove contorno ao focar */
+  border: 1px solid #191818; /* Borda sólida */
+  font-size: 1.2rem; /* Tamanho da fonte */
+  background: #2d2c2c; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+}
+
+/* Estiliza o botão dentro do formulário */
+.frm-linha button {
+  background: #2d2c2c; /* Cor de fundo */
+  border: 1px solid #191818; /* Borda sólida */
+  padding: 7px; /* Espaçamento interno */
+  margin-bottom: 10px; /* Margem inferior */
+  border-radius: 12px; /* Borda arredondada */
+  color: #ccc; /* Cor do texto */
+  cursor: pointer; /* Cursor indicando interação */
+  height: 50px; /* Altura */
+  font-size: 1.3rem; /* Tamanho da fonte */
+  outline: none; /* Remove contorno ao focar */
+}
+
+/* Estiliza o botão dentro do formulário quando hover */
+.frm-linha button:hover {
+  background: #3c3a3a; /* Altera cor de fundo ao passar o mouse */
+}
