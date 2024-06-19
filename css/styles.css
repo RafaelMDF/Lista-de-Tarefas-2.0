@@ -81,6 +81,14 @@ html {
   justify-content: space-between; /* Distribui espaço entre os itens */
   align-items: center; /* Alinha itens verticalmente */
   margin-top: 20px; /* Margem superior */
+  position: relative; /* Posição relativa para usar ::before */
+}
+
+#listaTarefas li::before {
+  content: attr(data-index) ". "; /* Exibe o número do contador */
+  position: absolute; /* Posição absoluta */
+  left: -35px; /* Ajuste a posição conforme necessário */
+  font-weight: bold; /* Negrito */
 }
 
 /* Estiliza os botões de ação dentro dos itens da lista */
@@ -170,41 +178,3 @@ form {
 /* Estiliza cada linha do formulário */
 .frm-linha {
   display: flex; /* Container flexível */
-  flex-direction: column; /* Direção da coluna */
-  margin-bottom: 20px; /* Margem inferior */
-}
-
-/* Estiliza o rótulo do campo de entrada no formulário */
-.frm-linha label {
-  margin-bottom: 7px; /* Margem inferior */
-}
-
-/* Estiliza o campo de entrada no formulário */
-.frm-linha input {
-  padding: 15px; /* Espaçamento interno */
-  border-radius: 12px; /* Borda arredondada */
-  outline: none; /* Remove contorno ao focar */
-  border: 1px solid #191818; /* Borda sólida */
-  font-size: 1.2rem; /* Tamanho da fonte */
-  background: #2d2c2c; /* Cor de fundo */
-  color: #fff; /* Cor do texto */
-}
-
-/* Estiliza o botão dentro do formulário */
-.frm-linha button {
-  background: #2d2c2c; /* Cor de fundo */
-  border: 1px solid #191818; /* Borda sólida */
-  padding: 7px; /* Espaçamento interno */
-  margin-bottom: 10px; /* Margem inferior */
-  border-radius: 12px; /* Borda arredondada */
-  color: #ccc; /* Cor do texto */
-  cursor: pointer; /* Cursor indicando interação */
-  height: 50px; /* Altura */
-  font-size: 1.3rem; /* Tamanho da fonte */
-  outline: none; /* Remove contorno ao focar */
-}
-
-/* Estiliza o botão dentro do formulário quando hover */
-.frm-linha button:hover {
-  background: #3c3a3a; /* Altera cor de fundo ao passar o mouse */
-}

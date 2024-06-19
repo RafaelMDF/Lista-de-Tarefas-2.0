@@ -105,13 +105,13 @@ function adicionarTarefa(tarefa) {
   inputNovaTarefa.value = "";
 }
 
-function criarTagLI(tarefa) {
+function criarTagLI(tarefa, index) {
   let li = document.createElement("li");
   li.id = tarefa.id;
 
   let span = document.createElement("span");
   span.classList.add("textoTarefa");
-  span.innerHTML = tarefa.nome;
+  span.innerHTML = (index + 1) + ". " + tarefa.nome; // Adiciona o número da tarefa
 
   let div = document.createElement("div");
 
@@ -133,6 +133,12 @@ function criarTagLI(tarefa) {
   return li;
 }
 
+function adicionarTarefa(tarefa) {
+  let index = listaTarefas.children.length;
+  let li = criarTagLI(tarefa, index);
+  listaTarefas.appendChild(li);
+  inputNovaTarefa.value = "";
+}
 function editar(idTarefa) {
   let li = document.getElementById("" + idTarefa + "");
   if (li) {
