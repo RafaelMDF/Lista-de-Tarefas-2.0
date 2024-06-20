@@ -84,13 +84,6 @@ html {
   position: relative; /* Posição relativa para usar ::before */
 }
 
-#listaTarefas li::before {
-  content: attr(data-index) ". "; /* Exibe o número do contador */
-  position: absolute; /* Posição absoluta */
-  left: -35px; /* Ajuste a posição conforme necessário */
-  font-weight: bold; /* Negrito */
-}
-
 /* Estiliza os botões de ação dentro dos itens da lista */
 .btnAcao {
   border-radius: 20px; /* Borda arredondada */

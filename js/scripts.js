@@ -99,8 +99,8 @@ function gerarIdUnico() {
   return id;
 }
 
-function adicionarTarefa(tarefa) {
-  let li = criarTagLI(tarefa);
+function adicionarTarefa(tarefa, index) {
+  let li = criarTagLI(`${tarefa}`);
   listaTarefas.appendChild(li);
   inputNovaTarefa.value = "";
 }
