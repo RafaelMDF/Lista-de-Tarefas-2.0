@@ -178,3 +178,4 @@ form {
 /* Estiliza cada linha do formulário */
 .frm-linha {
   display: flex; /* Container flexível */
+}
